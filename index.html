@@ -1,416 +1,184 @@
 <!DOCTYPE html>
-<html lang="en"
-      data-default-theme="minimal"
-      data-theme-lock="minimal"
-      data-default-mode="dark"
-      data-default-brand="#0ea5e9">
+<html lang="en" data-world="silver-screen">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTube Thumbnail Downloader - HD, 4K, All Sizes</title>
     <!-- SEO-META-START -->
-    <meta name="description" content="Download any YouTube video's thumbnail in HD (1280x720) and every other size. Paste the video link, preview all resolutions, save with one click. Works for Shorts. Free, no signup.">
-    <meta name="theme-color" content="#0ea5e9">
+    <meta name="description" content="Download any YouTube video’s thumbnail in HD (1280x720) and every other size on a silver screen. Paste the link, the frame loads every resolution that exists, save with one click. Works for Shorts. Free, no signup.">
+    <meta name="theme-color" content="#000000">
     <link rel="canonical" href="https://crusher-labs.github.io/youtube-thumbnail-downloader/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Web Utility Tools by CRUSHER">
     <meta property="og:title" content="YouTube Thumbnail Downloader - Web Utility Tools by CRUSHER">
-    <meta property="og:description" content="Download any YouTube video's thumbnail in HD and every other size. Paste the link, preview, save. Works for Shorts. Free, no signup.">
+    <meta property="og:description" content="Download any YouTube video’s thumbnail in HD (1280x720) and every other size on a silver screen. Paste the link, the frame loads every resolution that exists, save with one click. Works for Shorts. Free, no signup.">
     <meta property="og:url" content="https://crusher-labs.github.io/youtube-thumbnail-downloader/">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="YouTube Thumbnail Downloader - Web Utility Tools by CRUSHER">
-    <meta name="twitter:description" content="Download any YouTube video's thumbnail in HD and every other size. Paste the link, preview, save. Works for Shorts. Free, no signup.">
+    <meta name="twitter:description" content="Download any YouTube video’s thumbnail in HD (1280x720) and every other size on a silver screen. Paste the link, the frame loads every resolution that exists, save with one click. Works for Shorts. Free, no signup.">
     <!-- SEO-META-END -->
     <link rel="icon" href="data:,">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://i.ytimg.com; media-src 'self' blob:; connect-src 'self' https://unpkg.com https://api.web3forms.com https://i.ytimg.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://i.ytimg.com; connect-src 'self' https://api.web3forms.com https://i.ytimg.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self';">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/crusher-ui-kit@1.2.1/dist/crusher-ui.min.css" integrity="sha384-Y8s5q9n5rodpO7nSyRNxbxlns7zYnuOEymBbSwEg9GmW2R/Zt3U4BWOZLb3q2NjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/crusher-ui-kit@1.2.1/dist/themes/minimal.css" integrity="sha384-FLhZ0Qhy8nUbGu4oSm0Vs5uPCL1RgZn+Ld2/fj3PrYDUMqltf2vObwpWHiOzRx4l" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/crusher-ui-kit@1.2.1/dist/static/tool-shell.css" integrity="sha384-mWfiqr7mGlAa+yVw+7vt40gfFTtAhs2jjBYbTLTvNRYUtZEtAJ0YPHlTdB8kuhSE" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/crusher-ui-kit@1.2.1/dist/static/tool-shell.js" integrity="sha384-gNDnPKn5AoF0e4Q555fGbM+snO+UCP3/z4ErG3cyS/Akusg/bzTO+AYmG1WAMnab" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Public+Sans:wght@400;600&display=swap">
     <style>
-        body {
-        font-family: 'Inter', sans-serif;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-    /* === Premium polish (2026-05-14) === */
-    body { position: relative; isolation: isolate; }
-    body::before {
-        content: '';
-        position: fixed;
-        inset: 0 0 auto 0;
-        block-size: 32rem;
-        background:
-            radial-gradient(ellipse 70% 50% at 50% -5%,
-                color-mix(in srgb, var(--crusher-color-brand-primary) 18%, transparent),
-                transparent 65%);
-        pointer-events: none;
-        z-index: -1;
-        opacity: 0.85;
-    }
-    ::selection { background: color-mix(in srgb, var(--crusher-color-brand-primary) 30%, transparent); }
-        /* PREMIUM-INPUT-START (until framework-feedback Section 6 ships) */
-        .crusher-tool-control {
-            background: color-mix(in srgb, var(--crusher-background-surface) 72%, transparent);
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-            border: 1px solid color-mix(in srgb, var(--crusher-border-primary) 70%, transparent);
-            color: var(--crusher-text-primary);
-            padding: var(--crusher-spacing-3) var(--crusher-spacing-4);
-            border-radius: var(--crusher-radius-lg);
-            font-family: inherit;
-            font-size: 0.9375rem;
-            line-height: 1.5;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-        }
-        .crusher-tool-control:hover { border-color: var(--crusher-border-primary); }
-        .crusher-tool-control:focus-visible {
-            border-color: var(--crusher-color-brand-primary);
-            box-shadow: 0 0 0 4px color-mix(in srgb, var(--crusher-color-brand-primary) 18%, transparent);
-            outline: none;
-            background: var(--crusher-background-surface);
-        }
-        .crusher-tool-control::placeholder {
-            color: var(--crusher-text-secondary);
-            opacity: 0.7;
-        }
-        .crusher-tool-control:focus::placeholder { opacity: 0.4; }
-        textarea.crusher-tool-control { resize: vertical; min-block-size: 4.5rem; }
-        /* PREMIUM-INPUT-END */
-    .crusher-tool-title {
-        font-family: 'Fraunces', 'Georgia', serif;
-        font-optical-sizing: auto;
-        font-variation-settings: 'opsz' 48, 'SOFT' 30;
-        font-weight: 500;
-        font-style: normal;
-        font-size: clamp(2rem, 4.5vw, 3rem);
-        line-height: 1.05;
-        letter-spacing: -0.025em;
-    }
-    .crusher-tool-action {
-        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-    }
-    .crusher-tool-action:hover:not([disabled]) {
-        transform: translateY(-1px);
-        box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--crusher-color-brand-primary) 35%, transparent);
-    }
-        .tool-mono { font-family: 'JetBrains Mono', monospace; }
 
-        .ytd-stack { display: grid; gap: var(--crusher-spacing-6); max-width: 48rem; margin-inline: auto; }
-        .ytd-section { padding: var(--crusher-spacing-6); display: grid; gap: var(--crusher-spacing-4); }
-        .ytd-row { display: flex; gap: var(--crusher-spacing-3); flex-wrap: wrap; }
-        .ytd-url { flex: 1 1 18rem; }
-        .ytd-action {
-            padding-inline: var(--crusher-spacing-6); padding-block: var(--crusher-spacing-2);
-            border-radius: var(--crusher-radius-full); font-weight: 600;
-        }
-        .ytd-hint { text-align: center; font-size: var(--crusher-font-size-sm); color: var(--crusher-text-secondary); margin: 0; }
-        .ytd-hint[data-kind="error"] { color: #dc2626; }
+    :root { --black:#000; --screen:#0c0c0c; --silver:#e8e8e8; --dim:#8f8f8f; --rec:#ff2a2a; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; background:var(--black); color:#fff; font-family:'Public Sans', system-ui, sans-serif; background-image:linear-gradient(115deg, rgba(255,255,255,0.12), transparent 42%); }
+    .bar { height:22px; background:#000; }
+    .bar.t { border-bottom:1px solid rgba(255,255,255,0.15); } .bar.b { border-top:1px solid rgba(255,255,255,0.15); }
+    main { max-width:920px; margin:0 auto; padding:64px 24px 80px; }
+    h1 { margin:0; text-align:center; font-family:'Bebas Neue', Impact, sans-serif; font-weight:400; font-size:clamp(38px, 7vw, 68px); letter-spacing:.04em; line-height:1; }
+    .lede { margin:10px auto 26px; max-width:60ch; text-align:center; font-size:16px; line-height:1.5; color:var(--dim); }
+    .reel { display:flex; gap:10px; }
+    .in { flex:1; min-width:0; background:#111; border:1px solid rgba(255,255,255,0.25); color:#fff; font:15px 'Public Sans', sans-serif; padding:12px 14px; outline:none; border-radius:4px; }
+    .in:focus { border-color:#fff; }
+    .go { padding:12px 18px; background:#fff; color:#000; border:1px solid #fff; border-radius:4px; font:600 13.5px 'Public Sans', sans-serif; cursor:pointer; white-space:nowrap; }
+    .hint { margin:10px 0 0; text-align:center; font:13px 'Share Tech Mono', monospace; letter-spacing:.06em; color:var(--dim); min-height:1.3em; }
+    .hint.err { color:var(--rec); }
+    .frame { position:relative; margin-top:18px; aspect-ratio:16 / 9; background:var(--screen); border:1px solid rgba(255,255,255,0.18); overflow:hidden; display:flex; align-items:center; justify-content:center; }
+    .frame img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#000; }
+    .corner { position:absolute; width:14px; height:14px; border:2px solid #fff; z-index:2; }
+    .corner.tl { left:10px; top:10px; border-right:none; border-bottom:none; } .corner.tr { right:10px; top:10px; border-left:none; border-bottom:none; } .corner.bl { left:10px; bottom:10px; border-right:none; border-top:none; } .corner.br { right:10px; bottom:10px; border-left:none; border-top:none; }
+    .rec { position:absolute; right:14px; top:12px; z-index:2; display:flex; align-items:center; gap:6px; font-family:'Bebas Neue', Impact, sans-serif; font-size:15px; letter-spacing:.12em; }
+    .rec i { width:8px; height:8px; border-radius:50%; background:var(--rec); box-shadow:0 0 8px var(--rec); }
+    .leader { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+    .leader .cross { position:absolute; inset:0; background:linear-gradient(#fff, #fff) center / 100% 1px no-repeat, linear-gradient(#fff, #fff) center / 1px 100% no-repeat; opacity:.35; }
+    .leader .ring { position:absolute; border:1px solid rgba(255,255,255,0.4); border-radius:50%; }
+    .leader .num { font-family:'Bebas Neue', Impact, sans-serif; font-size:clamp(90px, 20vw, 190px); line-height:1; color:#fff; }
+    .leader .ps { position:absolute; bottom:12%; left:0; right:0; text-align:center; font:14px 'Share Tech Mono', monospace; letter-spacing:.3em; color:var(--silver); }
+    .frame.loaded .leader { display:none; }
+    .strip { margin-top:16px; background:#0a0a0a; border-block:10px solid #1c1c1c; padding:8px 0; position:relative; }
+    .strip::before, .strip::after { content:''; position:absolute; left:0; right:0; height:8px; background:repeating-linear-gradient(90deg, transparent 0 14px, #2a2a2a 14px 24px, transparent 24px 34px); }
+    .strip::before { top:-10px; } .strip::after { bottom:-10px; }
+    .strip:empty { display:none; }
+    .cell { display:grid; grid-template-columns:96px 1fr auto; gap:14px; align-items:center; padding:10px 18px; border-bottom:1px solid #1c1c1c; }
+    .cell:last-child { border-bottom:none; }
+    .cell img { width:96px; height:54px; object-fit:cover; border:2px solid #000; outline:1px solid #2a2a2a; }
+    .cell .m { display:flex; flex-direction:column; gap:2px; min-width:0; }
+    .cell .n { font-family:'Bebas Neue', Impact, sans-serif; font-size:18px; letter-spacing:.08em; }
+    .cell .s { font:12px 'Share Tech Mono', monospace; color:var(--dim); }
+    .dl { padding:8px 14px; background:#fff; color:#000; border-radius:4px; font:600 12.5px 'Public Sans', sans-serif; text-decoration:none; cursor:pointer; border:none; }
+    .notes { margin-top:44px; border:1px solid rgba(255,255,255,0.15); padding:24px 28px; background:#070707; }
+    .notes h2 { margin:0 0 10px; font-family:'Bebas Neue', Impact, sans-serif; font-weight:400; font-size:30px; letter-spacing:.04em; }
+    .notes h3 { margin:14px 0 6px; font-size:15px; font-weight:600; }
+    .notes p { margin:0 0 10px; font-size:14.5px; line-height:1.65; color:#bdbdbd; }
+    .notes details { border-top:1px solid #222; } .notes summary { cursor:pointer; padding:10px 0; font-weight:600; font-size:14px; }
+    .notes a { color:#fff; }
+    .foot { margin-top:22px; font:12px 'Share Tech Mono', monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--dim); display:flex; flex-wrap:wrap; gap:8px 24px; }
+    .foot a { color:#fff; }
+    .tool-feedback { margin-top:14px; font-size:13px; color:#bdbdbd; }
+    .tool-feedback summary::before { color:var(--rec); }
+    @media (max-width: 640px) { main { padding:44px 14px 70px; } .reel { flex-direction:column; } .cell { grid-template-columns:72px 1fr; } .cell img { width:72px; height:40px; } .cell .dl { grid-column:2; justify-self:start; } .notes { padding:20px 16px; } }
 
-        .ytd-grid { display: grid; gap: var(--crusher-spacing-4); }
-        .ytd-card {
-            display: grid; gap: var(--crusher-spacing-2);
-            padding: var(--crusher-spacing-3);
-            border: 1px solid var(--crusher-border-primary);
-            border-radius: var(--crusher-radius-lg);
-            background: var(--crusher-background-surface);
-        }
-        .ytd-card img { inline-size: 100%; block-size: auto; border-radius: var(--crusher-radius-md); }
-        .ytd-card-bar { display: flex; align-items: center; justify-content: space-between; gap: var(--crusher-spacing-3); flex-wrap: wrap; }
-        .ytd-size { font-family: 'JetBrains Mono', monospace; font-size: var(--crusher-font-size-sm); color: var(--crusher-text-secondary); }
-        .ytd-dl {
-            padding-inline: var(--crusher-spacing-4); padding-block: var(--crusher-spacing-1);
-            border-radius: var(--crusher-radius-full); font-weight: 600; font-size: var(--crusher-font-size-sm);
-        }
-
-        .ytd-prose { display: grid; gap: var(--crusher-spacing-3); }
-        .ytd-prose h2 {
-            font-family: 'Fraunces', 'Georgia', serif;
-            font-weight: 500; font-size: 1.5rem; letter-spacing: -0.015em;
-            margin: 0;
-        }
-        .ytd-prose h3 { font-size: 1.05rem; font-weight: 600; margin: 0; }
-        .ytd-prose p { margin: 0; color: var(--crusher-text-secondary); line-height: 1.65; }
-        .ytd-prose a { color: var(--crusher-color-brand-primary); }
-        .ytd-faq { border-top: 1px solid var(--crusher-border-primary); }
-        .ytd-faq summary { cursor: pointer; padding-block: var(--crusher-spacing-3); font-weight: 600; }
-        .ytd-faq p { padding-block-end: var(--crusher-spacing-3); }
-
-        .tool-feedback {
-            width: min(100%, 56rem);
-            margin: var(--crusher-spacing-8) auto var(--crusher-spacing-6);
-            padding-inline: var(--crusher-spacing-4);
-        }
-        .tool-feedback-trigger {
-            cursor: pointer;
-            padding: var(--crusher-spacing-2) var(--crusher-spacing-3);
-            font-size: var(--crusher-font-size-sm);
-            color: var(--crusher-text-secondary);
-            border-radius: var(--crusher-radius-md);
-            list-style: none;
-            display: inline-flex;
-            align-items: center;
-            gap: var(--crusher-spacing-2);
-            transition: color var(--crusher-motion-duration-fast) var(--crusher-motion-easing-standard);
-        }
-        .tool-feedback-trigger::-webkit-details-marker { display: none; }
-        .tool-feedback-trigger::before {
-            content: '+';
-            display: inline-block;
-            font-weight: 700;
-            color: var(--crusher-color-brand-primary);
-        }
-        .tool-feedback-details[open] .tool-feedback-trigger::before { content: '−'; }
-        .tool-feedback-trigger:hover { color: var(--crusher-color-brand-primary); }
-        .tool-feedback-form {
-            margin-top: var(--crusher-spacing-3);
-            padding: var(--crusher-spacing-4);
-            border: 1px solid var(--crusher-border-primary);
-            border-radius: var(--crusher-radius-lg);
-            background: var(--crusher-background-surface);
-            display: grid;
-            gap: var(--crusher-spacing-3);
-        }
-        .tool-feedback-field { display: grid; gap: var(--crusher-spacing-1); }
-        .tool-feedback-field > span {
-            font-size: var(--crusher-font-size-xs);
-            color: var(--crusher-text-secondary);
-            font-weight: 500;
-        }
-        .tool-feedback-submit {
-            padding-inline: var(--crusher-spacing-4);
-            padding-block: var(--crusher-spacing-2);
-        }
-        .tool-feedback-submit[disabled] { opacity: 0.6; cursor: not-allowed; }
-        .tool-feedback-status {
-            margin: 0;
-            min-block-size: 1.25rem;
-            font-size: var(--crusher-font-size-sm);
-            color: var(--crusher-text-secondary);
-        }
-        .tool-feedback-status[data-kind="ok"] { color: var(--crusher-color-brand-primary); }
-        .tool-feedback-status[data-kind="error"] { color: #dc2626; }
-        .tool-feedback-honey { position: absolute; left: -9999px; top: -9999px; opacity: 0; pointer-events: none; }
+    .tool-feedback summary { cursor:pointer; list-style:none; display:inline-flex; gap:8px; align-items:center; }
+    .tool-feedback summary::-webkit-details-marker { display:none; }
+    .tool-feedback summary::before { content:'+'; font-weight:700; }
+    .tool-feedback[open] summary::before { content:'\2212'; }
+    .tool-feedback form { display:grid; gap:10px; margin-top:12px; max-width:520px; }
+    .tool-feedback label { display:grid; gap:4px; font-size:12px; }
+    .tool-feedback textarea, .tool-feedback input[type="email"] { font:14px/1.5 inherit; padding:9px 11px; border:1px solid currentColor; background:transparent; color:inherit; border-radius:4px; }
+    .tool-feedback button { justify-self:start; padding:8px 16px; font:600 13px inherit; cursor:pointer; border:1px solid currentColor; background:transparent; color:inherit; border-radius:4px; }
+    .tool-feedback-honey { position:absolute; left:-9999px; top:-9999px; opacity:0; pointer-events:none; }
+    #tool-feedback-status { margin:0; min-height:1.2em; font-size:13px; }
+    #tool-feedback-status[data-kind="error"] { color:#c0392b; }
     </style>
 </head>
-<body class="crusher-tool-page">
+<body>
 
-    <main class="crusher-tool-shell">
-        <header class="crusher-tool-header">
-            <h1 class="crusher-tool-title">YouTube Thumbnail Downloader</h1>
-            <p class="crusher-tool-lede">Paste a YouTube link, preview every thumbnail size, download the one you want. Works for Shorts too.</p>
-        </header>
-
-        <div class="ytd-stack">
-            <section class="crusher-tool-surface ytd-section">
-                <div class="ytd-row">
-                    <input type="url" id="url-input" class="crusher-tool-control ytd-url" placeholder="https://www.youtube.com/watch?v=… or a Shorts / youtu.be link" aria-label="YouTube video URL">
-                    <button id="grab-btn" type="button" class="crusher-tool-action ytd-action">Get thumbnails</button>
-                </div>
-                <p class="ytd-hint" id="hint">Also accepts a bare 11-character video ID.</p>
-                <div class="ytd-grid" id="grid"></div>
-            </section>
-
-            <section class="crusher-tool-surface ytd-section ytd-prose">
-                <h2>Download YouTube thumbnails in every size</h2>
-                <p>Every YouTube video exposes its thumbnail at a handful of fixed sizes, from the tiny 120x90 preview up to the full HD 1280x720 image used on the watch page. Paste any video or Shorts link above and this tool shows the sizes that exist for that video, so you can preview and save exactly the resolution you need.</p>
-                <p>Handy for making reaction or comparison content, referencing a video in a blog post or presentation, recovering your own channel's artwork, or studying what makes a good thumbnail.</p>
-                <h3>No server, no tracking</h3>
-                <p>The thumbnail files come straight from YouTube's image servers to your browser; this page has no backend and stores nothing. Note that a video's thumbnail belongs to its creator: for anything beyond personal reference, get their permission. More free tools live on the <a href="https://tools.muhammadhassaanjaved.com/">Web Utility Tools hub</a>.</p>
-                <details class="ytd-faq">
-                    <summary>Why is there no HD (1280x720) option for some videos?</summary>
-                    <p>YouTube only generates the maxresdefault image when the video was uploaded in HD. Older or low-resolution uploads stop at 640x480, and this tool simply hides sizes that do not exist.</p>
-                </details>
-                <details class="ytd-faq">
-                    <summary>Does it work for Shorts and live streams?</summary>
-                    <p>Yes. Shorts links (youtube.com/shorts/ID), youtu.be short links, embed links and plain video IDs all work; live streams get thumbnails once the stream has one.</p>
-                </details>
-                <details class="ytd-faq">
-                    <summary>Can I download a thumbnail in 4K?</summary>
-                    <p>1280x720 is the largest size YouTube publishes for normal videos. Sites advertising "4K thumbnails" upscale the same 1280x720 file; if you need it larger, upscale it in an image editor with the original aspect ratio.</p>
-                </details>
-            </section>
-        </div>
+    <div class="bar t" aria-hidden="true"></div>
+    <main>
+      <h1>YouTube Thumbnail Downloader</h1>
+      <p class="lede">Paste a link. Every size the video has loads on the screen, previewed and downloadable. Works for Shorts too.</p>
+      <form id="yt-form" class="reel"><input id="yt-in" class="in" type="url" placeholder="https://www.youtube.com/watch?v=... or a Shorts / youtu.be link" aria-label="YouTube video URL"><button class="go" type="submit">Get thumbnails</button></form>
+      <p id="yt-hint" class="hint">Also accepts a bare 11-character video ID.</p>
+      <div id="yt-frame" class="frame" aria-live="polite">
+        <div class="corner tl" aria-hidden="true"></div><div class="corner tr" aria-hidden="true"></div><div class="corner bl" aria-hidden="true"></div><div class="corner br" aria-hidden="true"></div>
+        <div class="rec" aria-hidden="true"><i></i>HD</div>
+        <div class="leader" aria-hidden="true"><div class="cross"></div><div class="ring" style="width:62%;aspect-ratio:1;"></div><div class="ring" style="width:40%;aspect-ratio:1;"></div><div id="yt-num" class="num">8</div><div class="ps">PICTURE START</div></div>
+      </div>
+      <div id="yt-strip" class="strip"></div>
+      <section class="notes">
+        <h2>Download YouTube thumbnails in every size</h2>
+        <p>Every YouTube video exposes its thumbnail at a handful of fixed sizes, from the 120x90 preview up to the full 1280x720 image used on the watch page. Paste any video or Shorts link above and the screen loads the sizes that exist for that video, so you can preview and save exactly the resolution you need.</p>
+        <p>Handy for making reaction or comparison content, referencing a video in a blog post or presentation, recovering your own channel's artwork, or studying what makes a good thumbnail.</p>
+        <h3>No server, no tracking</h3>
+        <p>The thumbnail files come straight from YouTube's image servers to your browser; this page has no backend and stores nothing. A video's thumbnail belongs to its creator: for anything beyond personal reference, get their permission.</p>
+        <details><summary>Why is there no HD (1280x720) option for some videos?</summary><p>YouTube only generates the maxresdefault image when the video was uploaded in HD. Older or low-resolution uploads stop at 640x480, and this tool simply hides sizes that do not exist.</p></details>
+        <details><summary>Does it work for Shorts and live streams?</summary><p>Yes. Shorts links (youtube.com/shorts/ID), youtu.be short links, embed links and plain video IDs all work; live streams get thumbnails once the stream has one.</p></details>
+        <details><summary>Can I download a thumbnail in 4K?</summary><p>1280x720 is the largest size YouTube publishes for normal videos. Sites advertising 4K thumbnails upscale the same file.</p></details>
+      </section>
+      <div class="foot"><span>Reel 1 · picture start</span><a href="https://tools.muhammadhassaanjaved.com/">All tools</a></div>
+      <details class="tool-feedback ">
+      <summary>Suggest an improvement</summary>
+      <form id="tool-feedback-form" novalidate>
+        <label><span>What could be better?</span><textarea name="improvement" rows="3" required maxlength="2000" placeholder="Tell me what is missing or what could work better"></textarea></label>
+        <label><span>Your email (optional, only if you want a reply)</span><input type="email" name="replyto" maxlength="200" placeholder="your@email.com"></label>
+        <input type="text" name="botcheck" class="tool-feedback-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit">Send</button>
+        <p id="tool-feedback-status" role="status" aria-live="polite"></p>
+      </form>
+    </details>
     </main>
-
-    <a href="https://tools.muhammadhassaanjaved.com/" id="hub-bubble" class="crusher-tool-fab" title="View All Tools" target="_blank" rel="noopener noreferrer">
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="3" y="3" width="7" height="7"></rect>
-            <rect x="14" y="3" width="7" height="7"></rect>
-            <rect x="14" y="14" width="7" height="7"></rect>
-            <rect x="3" y="14" width="7" height="7"></rect>
-        </svg>
-    </a>
-
-    <crusher-style-switcher
-      default-theme="minimal"
-      default-brand="#0ea5e9"
-      hide-themes
-      hide-theme-color>
-        <svg slot="mode-light-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"/></svg>
-        <svg slot="mode-dark-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"/></svg>
-    </crusher-style-switcher>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/crusher-ui-kit@1.2.1/dist/crusher-ui.standalone.esm.js" integrity="sha384-49DxFeXn1ckPw9AmqDudkw1VT513Id+j1qJmkXCZBAiIaNechVSDTNnsKThtI54K" crossorigin="anonymous"></script>
-
+    <div class="bar b" aria-hidden="true"></div>
     <script>
-        const urlInput = document.getElementById('url-input');
-        const grabBtn = document.getElementById('grab-btn');
-        const gridEl = document.getElementById('grid');
-        const hintEl = document.getElementById('hint');
 
-        const SIZES = [
-            ['maxresdefault', 'HD 1280 x 720'],
-            ['sddefault', 'SD 640 x 480'],
-            ['hqdefault', 'HQ 480 x 360'],
-            ['mqdefault', 'MQ 320 x 180'],
-            ['default', 'Small 120 x 90']
-        ];
+const h = (tag, style, text, cls) => { const e = document.createElement(tag); if (style) e.style.cssText = style; if (text != null) e.textContent = text; if (cls) e.className = cls; return e; };
+const copyBtn = (btn, getText, label, done) => btn.addEventListener('click', async () => { try { await navigator.clipboard.writeText(getText()); btn.textContent = done || 'Copied'; } catch (e) { btn.textContent = 'Select to copy'; } setTimeout(() => { btn.textContent = label; }, 1400); });
+const pressGroup = (sel, onPick) => document.querySelectorAll(sel).forEach(b => b.addEventListener('click', () => { document.querySelectorAll(sel).forEach(x => x.setAttribute('aria-pressed', String(x === b))); onPick(b); }));
 
-        function parseVideoId(raw) {
-            const s = raw.trim();
-            if (/^[A-Za-z0-9_-]{11}$/.test(s)) return s;
-            let u;
-            try { u = new URL(s); } catch (e) { return null; }
-            if (!/(^|\.)((youtube\.com)|(youtube-nocookie\.com)|(youtu\.be))$/.test(u.hostname)) return null;
-            if (u.hostname.endsWith('youtu.be')) {
-                const id = u.pathname.slice(1).split('/')[0];
-                return /^[A-Za-z0-9_-]{11}$/.test(id) ? id : null;
-            }
-            const v = u.searchParams.get('v');
-            if (v && /^[A-Za-z0-9_-]{11}$/.test(v)) return v;
-            const m = u.pathname.match(/\/(shorts|embed|live|v)\/([A-Za-z0-9_-]{11})/);
-            return m ? m[2] : null;
-        }
 
-        function setHint(text, kind) {
-            hintEl.textContent = text;
-            if (kind) hintEl.dataset.kind = kind; else delete hintEl.dataset.kind;
-        }
+    const form = document.getElementById('yt-form'), inp = document.getElementById('yt-in'), hint = document.getElementById('yt-hint'), frame = document.getElementById('yt-frame'), strip = document.getElementById('yt-strip'), num = document.getElementById('yt-num');
+    const SIZES = [['maxresdefault', 'HD 1280 x 720'], ['sddefault', 'SD 640 x 480'], ['hqdefault', 'HQ 480 x 360'], ['mqdefault', 'MQ 320 x 180'], ['default', 'Small 120 x 90']];
+    let countdown = 8; setInterval(() => { countdown = countdown <= 2 ? 8 : countdown - 1; num.textContent = countdown; }, 1000);
+    function parseVideoId(raw) { const s = raw.trim(); if (/^[A-Za-z0-9_-]{11}$/.test(s)) return s; let u; try { u = new URL(s); } catch (e) { return null; } if (!/(^|\.)((youtube\.com)|(youtube-nocookie\.com)|(youtu\.be))$/.test(u.hostname)) return null; if (u.hostname.endsWith('youtu.be')) { const id = u.pathname.slice(1).split('/')[0]; return /^[A-Za-z0-9_-]{11}$/.test(id) ? id : null; } const v = u.searchParams.get('v'); if (v && /^[A-Za-z0-9_-]{11}$/.test(v)) return v; const m = u.pathname.match(/\/(shorts|embed|live|v)\/([A-Za-z0-9_-]{11})/); return m ? m[2] : null; }
+    const setHint = (t, err) => { hint.textContent = t; hint.classList.toggle('err', !!err); };
+    async function probe(url) { try { const r = await fetch(url, { cache: 'no-store' }); if (!r.ok) return null; return await r.blob(); } catch (e) { return null; } }
+    let mainImg = null;
+    async function grab(e) {
+      if (e) e.preventDefault();
+      const id = parseVideoId(inp.value); if (!id) { setHint('That does not look like a YouTube link or video ID.', true); return; }
+      setHint('Loading reel for ' + id); strip.textContent = ''; frame.classList.remove('loaded'); if (mainImg) { mainImg.remove(); mainImg = null; }
+      let found = 0;
+      for (const [name, label] of SIZES) {
+        const blob = await probe('https://i.ytimg.com/vi/' + id + '/' + name + '.jpg');
+        if (!blob || (name !== 'default' && blob.size < 2000)) continue;
+        const url = URL.createObjectURL(blob); found++;
+        if (!mainImg) { mainImg = h('img'); mainImg.src = url; mainImg.alt = 'Thumbnail ' + label; frame.appendChild(mainImg); frame.classList.add('loaded'); }
+        const cell = h('div', null, null, 'cell'); const im = h('img'); im.src = url; im.alt = ''; const m = h('div', null, null, 'm'); m.appendChild(h('div', null, label, 'n')); m.appendChild(h('div', null, name + '.jpg · ' + (blob.size / 1024).toFixed(0) + ' KB', 's')); const a = h('a', null, 'Download JPG', 'dl'); a.href = url; a.download = id + '-' + name + '.jpg'; cell.append(im, m, a); strip.appendChild(cell);
+      }
+      setHint(found ? found + ' size' + (found > 1 ? 's' : '') + ' on the reel for ' + id : 'No thumbnails found. Is the video public?', !found);
+    }
+    form.addEventListener('submit', grab);
 
-        async function probe(url) {
-            try {
-                const res = await fetch(url, { method: 'GET', cache: 'no-store' });
-                if (!res.ok) return null;
-                return await res.blob();
-            } catch (e) {
-                return null;
-            }
-        }
-
-        async function grab() {
-            const id = parseVideoId(urlInput.value);
-            if (!id) {
-                setHint('That does not look like a YouTube link or video ID.', 'error');
-                return;
-            }
-            grabBtn.disabled = true;
-            setHint('Fetching thumbnails…');
-            gridEl.textContent = '';
-            let found = 0;
-            for (const [name, label] of SIZES) {
-                const url = `https://i.ytimg.com/vi/${id}/${name}.jpg`;
-                const blob = await probe(url);
-                // YouTube serves a 120x90 gray placeholder (about 1kB) instead of 404 for
-                // some missing sizes; skip anything suspiciously tiny except 'default'.
-                if (!blob || (name !== 'default' && blob.size < 2000)) continue;
-                found += 1;
-                const card = document.createElement('div');
-                card.className = 'ytd-card';
-                const img = document.createElement('img');
-                img.src = URL.createObjectURL(blob);
-                img.alt = `Thumbnail ${label}`;
-                const bar = document.createElement('div');
-                bar.className = 'ytd-card-bar';
-                const size = document.createElement('span');
-                size.className = 'ytd-size';
-                size.textContent = `${label} · ${(blob.size / 1024).toFixed(0)} KB`;
-                const dl = document.createElement('button');
-                dl.type = 'button';
-                dl.className = 'crusher-tool-action ytd-dl';
-                dl.textContent = 'Download JPG';
-                dl.addEventListener('click', () => {
-                    const a = document.createElement('a');
-                    a.href = img.src;
-                    a.download = `${id}-${name}.jpg`;
-                    a.click();
-                });
-                bar.append(size, dl);
-                card.append(img, bar);
-                gridEl.appendChild(card);
-            }
-            setHint(found ? `${found} size${found > 1 ? 's' : ''} available for video ${id}.` : 'No thumbnails found. Is the video public?', found ? undefined : 'error');
-            grabBtn.disabled = false;
-        }
-
-        grabBtn.addEventListener('click', grab);
-        urlInput.addEventListener('keydown', e => { if (e.key === 'Enter') grab(); });
+(function() {
+  const KEY = '30e570c5-aeeb-439d-8a8a-bd2516a5dc5d';
+  const ENDPOINT = 'https://api.web3forms.com/submit';
+  const form = document.getElementById('tool-feedback-form');
+  const status = document.getElementById('tool-feedback-status');
+  if (!form || !status) return;
+  const toolName = (document.title || 'tool').trim();
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    fd.set('access_key', KEY);
+    fd.set('subject', '[' + toolName + '] Improvement suggestion');
+    fd.set('from_name', toolName);
+    const btn = form.querySelector('button[type="submit"]');
+    const orig = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Sending';
+    status.textContent = ''; delete status.dataset.kind;
+    try {
+      const res = await fetch(ENDPOINT, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
+      const data = await res.json();
+      if (data.success) { form.reset(); status.textContent = 'Thanks, your suggestion is in.'; status.dataset.kind = 'ok'; }
+      else { status.textContent = data.message || 'Sorry, that did not go through. Try again later?'; status.dataset.kind = 'error'; }
+    } catch (err) { status.textContent = 'Network error. Try again?'; status.dataset.kind = 'error'; }
+    finally { btn.disabled = false; btn.textContent = orig; }
+  });
+})();
     </script>
-
-    <section class="tool-feedback" aria-label="Tool feedback">
-        <details class="tool-feedback-details">
-            <summary class="tool-feedback-trigger">Suggest an improvement</summary>
-            <form id="tool-feedback-form" class="tool-feedback-form" novalidate>
-                <label class="tool-feedback-field">
-                    <span>What could be better?</span>
-                    <textarea name="improvement" rows="3" required maxlength="2000" class="crusher-tool-control" placeholder="Tell me what's missing or what could work better…"></textarea>
-                </label>
-                <label class="tool-feedback-field">
-                    <span>Your email (optional, only if you want a reply)</span>
-                    <input type="email" name="replyto" maxlength="200" class="crusher-tool-control" placeholder="your@email.com">
-                </label>
-                <input type="text" name="botcheck" class="tool-feedback-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-                <div>
-                    <button type="submit" class="crusher-tool-action tool-feedback-submit">Send</button>
-                </div>
-                <p id="tool-feedback-status" class="tool-feedback-status" role="status" aria-live="polite"></p>
-            </form>
-        </details>
-    </section>
-
-    <script>
-        (function() {
-            const KEY = '30e570c5-aeeb-439d-8a8a-bd2516a5dc5d';
-            const ENDPOINT = 'https://api.web3forms.com/submit';
-            const form = document.getElementById('tool-feedback-form');
-            const status = document.getElementById('tool-feedback-status');
-            if (!form || !status) return;
-            const toolName = (document.title || 'tool').trim();
-            const subject = '[' + toolName + '] Improvement suggestion';
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const fd = new FormData(form);
-                fd.set('access_key', KEY);
-                fd.set('subject', subject);
-                fd.set('from_name', toolName);
-                const btn = form.querySelector('button[type="submit"]');
-                const orig = btn.textContent;
-                btn.disabled = true; btn.textContent = 'Sending…';
-                status.textContent = ''; delete status.dataset.kind;
-                try {
-                    const res = await fetch(ENDPOINT, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
-                    const data = await res.json();
-                    if (data.success) {
-                        form.reset();
-                        status.textContent = 'Thanks, your suggestion is in.';
-                        status.dataset.kind = 'ok';
-                    } else {
-                        status.textContent = data.message || 'Sorry, that did not go through. Try again later?';
-                        status.dataset.kind = 'error';
-                    }
-                } catch (err) {
-                    status.textContent = 'Network error. Try again?';
-                    status.dataset.kind = 'error';
-                }
-                finally {
-                    btn.disabled = false; btn.textContent = orig;
-                }
-            });
-        })();
-    </script>
-
 </body>
 </html>
