@@ -1,22 +1,7 @@
-# AGENTS.md - YouTube Thumbnail Downloader
+# AGENTS.md - YouTube Thumbnail Downloader (moved)
 
-Single-purpose static tool, built as a **world page**: silver screen. Preview and download any YouTube video’s thumbnail in every available size on a cinema screen: an SMPTE-style leader frame while empty, the real 1280x720 image once loaded, smaller sizes on a film strip. Part of the crusher-labs static tools line. Hosted on GitHub Pages at https://crusher-labs.github.io/youtube-thumbnail-downloader/
+This tool moved to the consolidated tools site on 2026-09-03. **Do not edit anything here.**
 
-Workspace rules: `x:\crusher-labs\AGENTS.md`. Global rules: `~/.claude/CLAUDE.md`. Design standard: `x:\crusher-labs\docs\design-language.md` (tools section) and the atlas `x:\crusher-labs\docs\context\tools-theme-atlas.md`.
-
-## What it is
-
-- One `index.html`, no build step, no backend, fully client-side.
-- Owns its CSS, fonts (Google Fonts) and mode. Does NOT load `crusher-ui-kit`; has no style switcher. `<html data-world="...">` marks it for the world-page contract.
-
-## Contract (must hold)
-
-- SEO-META block, CSP meta (fonts.googleapis/gstatic + api.web3forms only, plus any host the tool genuinely needs), favicon, canonical, OG tags, `<h1>`, prose section with `<h2>` + `<details>` FAQ, the Web3Forms feedback form with honeypot, a link to https://tools.muhammadhassaanjaved.com/.
-- Validated by `tools-hub/scripts/check-static.mjs` (run `npm run check:static` from `repos/tools-hub`).
-
-## What NOT to do
-
-- Don't add the kit pins or the style switcher back; a world has a mode.
-- Don't restyle it toward the old dark shell. The object is the design.
-- Don't commit to `main` directly (`dev` -> QA at 1440 + 390 -> fast-forward `main`). No `Co-Authored-By` / AI-attribution trailers.
-- Don't add Tailwind CDN / Font Awesome.
+- Live: <https://tools.muhammadhassaanjaved.com/youtube-thumbnail-downloader/>
+- Source: `tools-hub` repo, `youtube-thumbnail-downloader/index.html` (workspace path `x:/crusher-labs/repos/tools-hub/youtube-thumbnail-downloader/`)
+- This repo serves a redirect stub only, and is kept for its history.
